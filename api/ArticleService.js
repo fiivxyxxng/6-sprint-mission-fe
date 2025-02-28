@@ -10,8 +10,8 @@ const instance = axios.create({
  * @param {number} pageSize
  * @param {string} [keyword]
  */
-export const getArticleList = async (params) => {
-  return await instance
+export const getArticleList = (params) => {
+  return instance
     .get("/articles", { params })
     .then((response) => {
       return response.data;
@@ -28,8 +28,8 @@ export const getArticleList = async (params) => {
 /**
  * 게시글 상세 조회
  */
-export const getArticle = async (id) => {
-  return await instance
+export const getArticle = (id) => {
+  return instance
     .get(`/articles/${id}`)
     .then((response) => {
       return response.data;
@@ -46,8 +46,8 @@ export const getArticle = async (id) => {
 /**
  * 게시글 등록
  */
-export const createArticle = async (data) => {
-  return await instance
+export const createArticle = (data) => {
+  return instance
     .post("/articles", data)
     .then((response) => {
       return response.data;
@@ -64,8 +64,8 @@ export const createArticle = async (data) => {
 /**
  * 게시글 수정
  */
-export const patchArticle = async (id, data) => {
-  return await instance
+export const patchArticle = (id, data) => {
+  return instance
     .patch(`/articles/${id}`, data)
     .then((response) => {
       return response.data;
@@ -82,8 +82,8 @@ export const patchArticle = async (id, data) => {
 /**
  * 게시글 삭제
  */
-export const deleteArticle = async (id) => {
-  return await instance
+export const deleteArticle = (id) => {
+  return instance
     .delete(`/articles/${id}`)
     .then((response) => {
       console.log(response.status, "성공적으로 삭제됨");
