@@ -4,6 +4,14 @@ const instance = axios.create({
   baseURL: "https://sprint-mission-api.vercel.app",
 });
 
+const handleError = (error, msg) => {
+  if (error.response) {
+    console.log(error.response.status, msg);
+  } else {
+    console.log(error.message);
+  }
+};
+
 /**
  * 게시글 목록 조회
  * @param {number} page
@@ -17,11 +25,7 @@ export const getArticleList = (params) => {
       return response.data;
     })
     .catch((error) => {
-      if (error.response) {
-        console.log(error.response.status);
-      } else {
-        console.log(error.message);
-      }
+      handleError(error, "게시글을 찾을 수 없음");
     });
 };
 
@@ -35,11 +39,7 @@ export const getArticle = (id) => {
       return response.data;
     })
     .catch((error) => {
-      if (error.response) {
-        console.log(error.response.status, "게시글을 찾을 수 없음");
-      } else {
-        console.log(error.message);
-      }
+      handleError(error, "게시글을 찾을 수 없음");
     });
 };
 
@@ -53,11 +53,7 @@ export const createArticle = (data) => {
       return response.data;
     })
     .catch((error) => {
-      if (error.response) {
-        console.log(error.response.status, "유효성 검사 오류");
-      } else {
-        console.log(error.message);
-      }
+      handleError(error, "유효성 검사 오류");
     });
 };
 
@@ -71,11 +67,7 @@ export const patchArticle = (id, data) => {
       return response.data;
     })
     .catch((error) => {
-      if (error.response) {
-        console.log(error.response.status, "게시글을 찾을 수 없음");
-      } else {
-        console.log(error.message);
-      }
+      handleError(error, "게시글을 찾을 수 없음");
     });
 };
 
@@ -90,10 +82,6 @@ export const deleteArticle = (id) => {
       return response.data;
     })
     .catch((error) => {
-      if (error.response) {
-        console.log(error.response.status, "게시글을 찾을 수 없음");
-      } else {
-        console.log(error.message);
-      }
+      handleError(error, "게시글을 찾을 수 없음");
     });
 };
